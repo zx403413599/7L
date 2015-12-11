@@ -19,15 +19,16 @@ class Editor:
         self.browser.set_javascript_prompt_callback(
             self._javascript_prompt_callback
         )
+        self.main_window = None  # run 之后才能获取
 
     def run(self):
         self.browser.load(self._url)
         self.browser.show()
+        self.main_window = self._get_main_window()
         self.browser.browse()
 
     def _open(self):
-        main_window = self._get_main_window()
-        dlg = PyQt4.QtGui.QFileDialog(main_window)  
+        dlg = PyQt4.QtGui.QFileDialog(self.main_window)  
         self._filename = dlg.getOpenFileName()  
         data = open(self._filename).read()
         return data
