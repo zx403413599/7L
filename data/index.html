@@ -26,6 +26,17 @@
                     alert(ret.errmess)
                 }
             }
+
+            function save(editor) {
+                // 判断行末 添加换行符号
+                ret = pycall('save', {
+                    data: editor.value()
+                })
+                if (!ret.success) {
+                    alert(ret.errmess)
+                }
+            }
+
             var simplemde = new SimpleMDE({
                 toolbar: [
                     {
@@ -33,6 +44,12 @@
                         action: open,
                         className: "fa fa-file",
                         title: "Open",
+                    },
+                    {
+                        name: "save",
+                        action: save,
+                        className: "fa fa-save",
+                        title: "Save",
                     },
                     "|", // Separator
                 ],

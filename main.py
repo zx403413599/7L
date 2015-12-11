@@ -14,6 +14,7 @@ class Editor:
         self.filename = ''
         self._pycall = {}
         self._register_pycall('open', self._open)
+        self._register_pycall('save', self._save)
 
         self.browser = spynner.Browser()
         self.browser.set_javascript_prompt_callback(
@@ -34,15 +35,16 @@ class Editor:
         self.filename = filename
         return data
 
-    def _save(self, text):
-        if os.path.isfile(self._filename):
-            open(self._filename, 'w').write(text)
+    def _save(self, data):
+        if os.path.isfile(self.filename):
+            open(self.filename, 'w').write(data)
         else:
-            self._save_as(text)
+            self._save_as(data)
 
     def _save_as(self, text):
         # 选择文件
         # open write
+        print 'save as'
         pass
 
     def _get_main_window(self):
