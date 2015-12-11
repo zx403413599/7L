@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="simplemde/simplemde.min.css">
+        <script src="simplemde/simplemde.min.js"></script>
+        <script src="JSON-js/json2.js"></script>
+    </head>
+    <body>
+        <textarea></textarea>
+        <script>
+
+            function pycall(name) {
+                var kwargs = arguments[1] || {}
+                return JSON.parse(
+                    prompt(name,
+                        JSON.stringify(kwargs)
+                    )
+                )
+            }
+                
+            function open(editor) {
+                ret = pycall('open')
+                if (ret.success) {
+                    editor.value(ret.data)
+                } else {
+                    alert(ret.errmess)
+                }
+            }
+            var simplemde = new SimpleMDE({
+                toolbar: [
+                    {
+                        name: "open",
+                        action: open,
+                        className: "fa fa-file",
+                        title: "Open",
+                    },
+                    "|", // Separator
+                ],
+            });
+            //simplemde.toggleSideBySide()
+            // prompt('open', '{}')
+        </script>
+    </body>
+</html>
