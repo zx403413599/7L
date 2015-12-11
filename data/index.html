@@ -4,6 +4,8 @@
         <link rel="stylesheet" href="simplemde/simplemde.min.css">
         <script src="simplemde/simplemde.min.js"></script>
         <script src="JSON-js/json2.js"></script>
+        <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
     </head>
     <body>
         <textarea></textarea>
@@ -154,6 +156,10 @@
 	                },
                 ],
                 spellChecker: false,
+                renderingConfig: {
+                    singleLineBreaks: false,
+                    codeSyntaxHighlighting: true,
+                },
             });
             simplemde.toggleSideBySide()
             // prompt('open', '{}')
