@@ -11,7 +11,7 @@ class Editor:
     def __init__(self, icon, title, url):
         self._url = url
 
-        self._filename = ''
+        self.filename = ''
         self._pycall = {}
         self._register_pycall('open', self._open)
 
@@ -29,8 +29,9 @@ class Editor:
 
     def _open(self):
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)  
-        self._filename = dlg.getOpenFileName()  
-        data = open(self._filename).read()
+        filename = dlg.getOpenFileName()
+        data = open(filename).read()
+        self.filename = filename
         return data
 
     def _save(self, text):
@@ -65,7 +66,7 @@ class Editor:
                 ret['data'] = data
             except Exception as e:
                 ret['success'] = False
-                ret['errmess'] = unicode(e)
+                ret['errmess'] = str(e)
 
             return json.dumps(ret)
 
