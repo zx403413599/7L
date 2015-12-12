@@ -32,9 +32,10 @@ class Editor:
     def _open(self):
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)
         filename = dlg.getOpenFileName()
-        data = open(filename).read()
-        self.filename = filename
-        return data
+        if filename:
+            data = open(filename).read()
+            self.filename = filename
+            return data
 
     def _save(self, data):
         if os.path.isfile(self.filename):
@@ -45,8 +46,9 @@ class Editor:
     def _save_as(self, data):
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)
         filename = dlg.getSaveFileName()
-        open(filename, 'w').write(data)
-        self.filename = filename
+        if filename:
+            open(filename, 'w').write(data)
+            self.filename = filename
 
     def _get_main_window(self):
         for widget in self.browser.application.allWidgets():
