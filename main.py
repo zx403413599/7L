@@ -35,6 +35,7 @@ class Editor:
         if filename:
             data = open(filename).read()
             self.filename = filename
+            self.browser.webview.setWindowTitle(filename)
             return data
 
     def _save(self, data):
@@ -49,6 +50,7 @@ class Editor:
         if filename:
             open(filename, 'w').write(data)
             self.filename = filename
+            self.browser.webview.setWindowTitle(filename)
 
     def _get_main_window(self):
         for widget in self.browser.application.allWidgets():
