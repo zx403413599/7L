@@ -13,9 +13,9 @@ class Editor:
 
         self.filename = ''
         self._pycall = {}
-        self._register_pycall('open', self._open)
-        self._register_pycall('save', self._save)
-        self._register_pycall('save_as', self._save_as)
+        self.register_pycall('open', self.open)
+        self.register_pycall('save', self.save)
+        self.register_pycall('save_as', self.save_as)
 
         self.browser = spynner.Browser()
         self.browser.set_javascript_prompt_callback(
@@ -29,7 +29,7 @@ class Editor:
         self.main_window = self._get_main_window()
         self.browser.browse()
 
-    def _open(self):
+    def open(self):
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)
         filename = dlg.getOpenFileName()
         if filename:
@@ -38,13 +38,13 @@ class Editor:
             self.browser.webview.setWindowTitle(filename)
             return data
 
-    def _save(self, data):
+    def save(self, data):
         if os.path.isfile(self.filename):
             open(self.filename, 'w').write(data)
         else:
             self._save_as(data)
 
-    def _save_as(self, data):
+    def save_as(self, data):
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)
         filename = dlg.getSaveFileName()
         if filename:
@@ -57,7 +57,7 @@ class Editor:
             if widget.__class__ == PyQt4.QtGui.QWidget:
                 return widget
 
-    def _register_pycall(self, name, func):
+    def register_pycall(self, name, func):
         self._pycall[name] = func
 
     def _javascript_prompt_callback(self, url, message, defaultvalue):
