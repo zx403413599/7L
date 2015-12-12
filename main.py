@@ -57,7 +57,7 @@ class Editor:
 
     def render(self, format, data):
         pandoc = Popen(['pandoc', '-t', format], stdin=PIPE, stdout=PIPE)
-        ouput = pandoc.communicate(input=data)[0]
+        ouput = pandoc.communicate(input=data.encode('utf-8'))[0]
         return ouput
 
     def _get_main_window(self):
