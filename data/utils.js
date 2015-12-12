@@ -35,3 +35,15 @@ function save_as(editor) {
         alert(ret.errmess)
     }
 }
+
+function render(format, data) {
+    ret = pycall('render', {
+        data: data,
+        format: format
+    })
+    if (ret.success) {
+        return ret.data
+    } else {
+        return ret.errmess
+    }
+}

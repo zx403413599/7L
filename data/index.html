@@ -124,6 +124,9 @@
                     codeSyntaxHighlighting: true,
                 },
                 autoDownloadFontAwesome: false,
+                previewRender: function(data) {
+                    return render('html', data)
+                }
             });
             simplemde.toggleSideBySide()
             // prompt('open', '{}')

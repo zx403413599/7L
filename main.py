@@ -6,6 +6,8 @@ import json
 import spynner
 import PyQt4.QtGui
 
+from subprocess import Popen, PIPE
+
 
 class Editor:
     def __init__(self, icon, title, url):
@@ -16,6 +18,7 @@ class Editor:
         self.register_pycall('open', self.open)
         self.register_pycall('save', self.save)
         self.register_pycall('save_as', self.save_as)
+        self.register_pycall('render', self.render)
 
         self.browser = spynner.Browser()
         self.browser.set_javascript_prompt_callback(
@@ -51,6 +54,11 @@ class Editor:
             open(filename, 'w').write(data)
             self.filename = filename
             self.browser.webview.setWindowTitle(filename)
+
+    def render(self, format, data):
+        pandoc = Popen(['pandoc', '-t', format], stdin=PIPE, stdout=PIPE)
+        ouput = pandoc.communicate(input=data)[0]
+        return ouput
 
     def _get_main_window(self):
         for widget in self.browser.application.allWidgets():
