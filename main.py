@@ -45,7 +45,7 @@ class Editor:
         if os.path.isfile(self.filename):
             open(self.filename, 'w').write(data)
         else:
-            self._save_as(data)
+            self.save_as(data)
 
     def save_as(self, data):
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)
