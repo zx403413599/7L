@@ -16,10 +16,17 @@ function open(editor) {
     }
 }
 
+function ensure_newline(editor) {
+    text = editor.value()
+    if (text.charAt(text.length - 1) != '\n')
+        text += '\n'
+        editor.value(text)
+    return text
+}
+
 function save(editor) {
-    // 判断行末 添加换行符号
     ret = pycall('save', {
-        data: editor.value()
+        data: ensure_newline(editor)
     })
     if (!ret.success) {
         alert(ret.errmess)
@@ -27,9 +34,8 @@ function save(editor) {
 }
 
 function save_as(editor) {
-    // 判断行末 添加换行符号
     ret = pycall('save_as', {
-        data: editor.value()
+        data: ensure_newline(editor)
     })
     if (!ret.success) {
         alert(ret.errmess)
