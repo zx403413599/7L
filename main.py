@@ -1,7 +1,8 @@
-# -*- encoding: utf-8 -*-
 #!/usr/bin/env python2
+# -*- encoding: utf-8 -*-
 
 import os
+import sys
 import json
 import spynner
 import PyQt4.QtGui
@@ -32,14 +33,15 @@ class Editor:
         font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
         settings = QWebSettings.globalSettings()
         settings.setFontFamily(QWebSettings.StandardFont, font_family)
-        self.main_window = None  # run 之后才能获取
 
-    def run(self):
         self.browser.load(self._url)
         self.browser.show()
         self.main_window = self._get_main_window()
+
         # 去掉右键出现的 Reload 菜单
         self.browser.webview.page().action(QWebPage.Reload).setVisible(False)
+
+    def run(self):
         self.browser.browse()
 
     def open(self):
@@ -64,6 +66,12 @@ class Editor:
             open(filename, 'w').write(data)
             self.filename = filename
             self.browser.webview.setWindowTitle(filename)
+
+    def read(self, filename):
+        data = open(filename).read()
+        self.filename = filename
+        self.browser.runjs('simplemde.value(%s)' % repr(data))
+        self.browser.webview.setWindowTitle(filename)
 
     def render(self, format, data):
         pandoc = Popen(['pandoc', '-t', format], stdin=PIPE, stdout=PIPE)
@@ -98,4 +106,6 @@ class Editor:
 
 if __name__ == '__main__':
     editor = Editor('', '', 'data/index.html')
+    if len(sys.argv) > 1:
+        editor.read(sys.argv[1])
     editor.run()
