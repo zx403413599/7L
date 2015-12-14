@@ -5,6 +5,8 @@ import os
 import json
 import spynner
 import PyQt4.QtGui
+from PyQt4 import QtWebKit
+from PyQt4.QtGui import QFontDatabase
 
 from subprocess import Popen, PIPE
 
@@ -24,6 +26,13 @@ class Editor:
         self.browser.set_javascript_prompt_callback(
             self._javascript_prompt_callback
         )
+
+        # 设置默认字体
+        font_id = QFontDatabase.addApplicationFont('data/wqy-microhei.ttc')
+        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        settings = QtWebKit.QWebSettings.globalSettings()
+        settings.setFontFamily(QtWebKit.QWebSettings.StandardFont, font_family)
+
         self.main_window = None  # run 之后才能获取
 
     def run(self):
