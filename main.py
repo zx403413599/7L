@@ -105,6 +105,7 @@ class Editor:
 
 
 if __name__ == '__main__':
+    os.chdir(os.path.dirname(sys.argv[0]))
     editor = Editor('', '', 'data/index.html')
     if len(sys.argv) > 1:
         editor.read(sys.argv[1])
