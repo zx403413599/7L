@@ -54,7 +54,7 @@ class Editor:
         if filename:
             data = open(filename).read()
             self.filename = filename
-            self.browser.webview.setWindowTitle(filename)
+            self.browser.webview.setWindowTitle(os.path.abspath(filename))
             return data
 
     def save(self, data):
@@ -69,13 +69,13 @@ class Editor:
         if filename:
             open(filename, 'w').write(data.encode('utf-8'))
             self.filename = filename
-            self.browser.webview.setWindowTitle(filename)
+            self.browser.webview.setWindowTitle(os.path.abspath(filename))
 
     def read(self, filename):
         data = open(filename).read()
         self.filename = filename
         self.browser.runjs('simplemde.value(%s)' % repr(data))
-        self.browser.webview.setWindowTitle(filename)
+        self.browser.webview.setWindowTitle(os.path.abspath(filename))
 
     def render(self, format, data):
         pandoc = Popen(['pandoc', '-t', format], stdin=PIPE, stdout=PIPE)
