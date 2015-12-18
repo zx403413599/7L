@@ -55,7 +55,7 @@ class Editor:
 
     def save(self, data):
         if os.path.isfile(self.filename):
-            open(self.filename, 'w').write(data)
+            open(self.filename, 'w').write(data.encode('utf-8'))
         else:
             self.save_as(data)
 
@@ -63,7 +63,7 @@ class Editor:
         dlg = PyQt4.QtGui.QFileDialog(self.main_window)
         filename = dlg.getSaveFileName()
         if filename:
-            open(filename, 'w').write(data)
+            open(filename, 'w').write(data.encode('utf-8'))
             self.filename = filename
             self.browser.webview.setWindowTitle(filename)
 
