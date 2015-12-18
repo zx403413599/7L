@@ -9,3 +9,8 @@ build: ${SIMPLEMDE_TARGET}
 	pyinstaller main.spec
 	cp spynner/ dist/7L/ -r
 	cp data/ dist/7L -r
+
+clean:
+	rm ${SIMPLEMDE_TARGET}
+	rm dist/ -rf
+	rm build/ -rf
