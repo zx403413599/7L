@@ -18,19 +18,19 @@
                         name: "open",
                         action: open,
                         className: "fa fa-folder-open-o",
-                        title: "Open",
+                        title: "Open (Ctrl+O)",
                     },
                     {
                         name: "save",
                         action: save,
                         className: "fa fa-save",
-                        title: "Save",
+                        title: "Save (Ctrl+S)",
                     },
                     {
                         name: "save_as",
                         action: save_as,
                         className: "fa fa-files-o",
-                        title: "Save As",
+                        title: "Save As (Ctrl+Shift+S)",
                     },
                     "|", // Separator
 	                {
@@ -122,9 +122,13 @@
                 // previewRender: function(data) {
                 //     return render('html', data)
                 // }
+                shortcuts: {
+                    "Cmd-O": open,
+                    "Cmd-S": save,
+                    "Shift-Cmd-S": save_as,
+                },
             });
             simplemde.toggleSideBySide()
             // prompt('open', '{}')
         </script>
-    </body>
-</html>
+    </body> </html>
