@@ -4,3 +4,8 @@ SIMPLEMDE_SOURCE := node_modules/simplemde/src/js/simplemde.js node_modules/simp
 ${SIMPLEMDE_TARGET}: ${SIMPLEMDE_SOURCE}
 	cd node_modules/simplemde/ && gulp
 	cp node_modules/simplemde/dist/* data/simplemde/
+
+build: ${SIMPLEMDE_TARGET}
+	pyinstaller main.spec
+	cp spynner/ dist/7L/ -r
+	cp data/ dist/7L -r
