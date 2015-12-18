@@ -38,6 +38,10 @@ class Editor:
         self.browser.show()
         self.main_window = self._get_main_window()
 
+        # 设置标题
+        self.browser.webview.setWindowTitle(title)
+
+
         # 去掉右键出现的 Reload 菜单
         self.browser.webview.page().action(QWebPage.Reload).setVisible(False)
 
@@ -108,7 +112,7 @@ if __name__ == '__main__':
     home = os.path.dirname(sys.argv[0])
     if not home: home = '.'
     os.chdir(home)
-    editor = Editor('', '', 'data/index.html')
+    editor = Editor('', '7L', 'data/index.html')
     if len(sys.argv) > 1:
         editor.read(sys.argv[1])
     editor.run()
