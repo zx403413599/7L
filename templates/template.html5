@@ -13,46 +13,63 @@
           }
         }
     </style>
-  <title></title>
+$for(author-meta)$
+  <meta name="author" content="$author-meta$">
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$">
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link rel="stylesheet" href="markdown.css">
+$if(quotes)$
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+$endif$
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+$for(css)$
+  <link rel="stylesheet" href="$css$">
+$endfor$
+$if(math)$
+  $math$
+$endif$
+$for(header-includes)$
+  $header-includes$
+$endfor$
 </head>
 <body>
 <div class="container">
-<h1 id="l-v0.1.0">7L <small>v0.1.0</small></h1>
-<p>本地 Markdown 编辑器, 使用 pandoc 进行转换, 使用所见即所得的编辑方式, 未来将增加 pdf 等格式输出的功能</p>
-<hr />
-<h2 id="形状">形状</h2>
-<figure>
-<img src="screenshoot.png" alt="形状" /><figcaption>形状</figcaption>
-</figure>
-<h2 id="获取途径">获取途径</h2>
-<p><a href="https://github.com/xalley/7L/releases">github</a></p>
-<p><a href="">百度网盘</a></p>
-<h2 id="成分">成分</h2>
-<ul>
-<li><p><a href="https://github.com/NextStepWebs/simplemde-markdown-editor">simplemde</a></p>
-<p>编辑器的主要构成部分</p></li>
-<li><p><a href="https://github.com/jgm/pandoc">pandoc</a></p>
-<p>将 markdwon 转为 html 用于预览, 也可导出其他格式文档</p></li>
-<li><p><a href="https://github.com/makinacorpus/spynner">spynner</a></p>
-<p>浏览器, 通过 javascript_prompt_callback 实现 simplemde 保存文件到本地</p></li>
-</ul>
-<h2 id="help">HELP!</h2>
-<p>目前还存在很多问题, 希望各位能帮忙提提需求, 报报 BUG, 改进程序.</p>
-<p>如果能帮忙绘制 markdown 文件的图标和程序的图标, 更是感激.</p>
-<hr />
-<p class="text-center">
-页面灵感来自<a href="http://mrcoles.com/demo/markdown-css/">Markdown.css</a>
-<p>
-
-<hr />
-<p class="text-center">
-<a href="https://github.com/xalley/">Xalley</a>
-</p>
+$for(include-before)$
+$include-before$
+$endfor$
+$if(title)$
+<header>
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+<h1 class="subtitle">$subtitle$</h1>
+$endif$
+$for(author)$
+<h2 class="author">$author$</h2>
+$endfor$
+$if(date)$
+<h3 class="date">$date$</h3>
+$endif$
+</header>
+$endif$
+$if(toc)$
+<nav id="$idprefix$TOC">
+$toc$
+</nav>
+$endif$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
 </div>
 </body>
 <script>

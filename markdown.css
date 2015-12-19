@@ -1,0 +1,27 @@
+h1 {
+    font-size: 60px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+h1:before {
+    content: "# ";
+}
+
+h2:before {
+    content: "## ";
+}
+
+li {
+    list-style-type: '* ';
+}
+
+span.mdlink {
+    font-size: 20px;
+    color: gray
+}
