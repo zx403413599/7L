@@ -7,7 +7,7 @@ ${SIMPLEMDE_TARGET}: ${SIMPLEMDE_SOURCE}
 
 build: ${SIMPLEMDE_TARGET}
 	pyinstaller main.spec
-	cp spynner/ dist/7L/ -r
+	cp python_modules/spynner/ dist/7L/ -r
 	cp data/ dist/7L -r
 
 clean:
