@@ -87,6 +87,7 @@
     var figcaption = figure.getElementsByTagName("figcaption")[0];
     figure.removeChild(figcaption);
     var p = document.createElement("p");
+    p.className = "text-center";
     var head = document.createElement("span");
     head.textContent = "![" + figcaption.textContent + "]"
     var left = document.createElement("span")
