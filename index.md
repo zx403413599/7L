@@ -21,7 +21,7 @@
 [百度网盘](http://pan.baidu.com/s/1mhmilPu)
 
 
-## 成分
+## 主要成分
 
 * [simplemde](https://github.com/NextStepWebs/simplemde-markdown-editor)
 
@@ -35,6 +35,7 @@
 
     浏览器, 通过 javascript_prompt_callback 实现 simplemde 保存文件到本地
 
+另外, 目前用的 markdown 文件图标来自 KDE5 主题 微风
 
 ## HELP!
 
