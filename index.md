@@ -21,6 +21,11 @@
 [百度网盘](http://pan.baidu.com/s/1mhmilPu)
 
 
+## Pandoc's Markdown
+
+[Pandoc’s Markdown 語法中文翻譯](http://pages.tzengyuxio.me/pandoc/)
+
+
 ## 主要成分
 
 * [simplemde](https://github.com/NextStepWebs/simplemde-markdown-editor)
