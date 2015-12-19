@@ -25,3 +25,8 @@ span.mdlink {
     font-size: 20px;
     color: gray
 }
+
+img {
+    width: 100%;
+    height: 100%;
+}
