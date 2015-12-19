@@ -7,3 +7,4 @@ data/simplemde/simplemde.min.js
 data/simplemde/simplemde.min.css
 Output/
 pandoc-*
+node_modules/simplemde/debug/
