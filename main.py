@@ -72,9 +72,9 @@ class Editor:
             self.browser.webview.setWindowTitle(os.path.abspath(filename))
 
     def read(self, filename):
-        data = open(filename).read()
+        data = open(filename).read().decode('utf-8')
         self.filename = filename
-        self.browser.runjs('simplemde.value(%s)' % repr(data))
+        self.browser.runjs('simplemde.value(%s)' % repr(data)[1:])
         self.browser.webview.setWindowTitle(os.path.abspath(filename))
 
     def render(self, data):
