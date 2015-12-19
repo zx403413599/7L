@@ -77,8 +77,8 @@ class Editor:
         self.browser.runjs('simplemde.value(%s)' % repr(data))
         self.browser.webview.setWindowTitle(os.path.abspath(filename))
 
-    def render(self, format, data):
-        pandoc = Popen(['pandoc', '-t', format], stdin=PIPE, stdout=PIPE)
+    def render(self, data):
+        pandoc = Popen(['pandoc'], stdin=PIPE, stdout=PIPE)
         ouput = pandoc.communicate(input=data.encode('utf-8'))[0]
         return ouput
 

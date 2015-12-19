@@ -42,10 +42,9 @@ function save_as(editor) {
     }
 }
 
-function render(format, data) {
+function render(data) {
     ret = pycall('render', {
-        data: data,
-        format: format
+        data: data
     })
     if (ret.success) {
         return ret.data

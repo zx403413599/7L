@@ -119,9 +119,7 @@
                 },
                 autoDownloadFontAwesome: false,
                 tabSize: 4,
-                // previewRender: function(data) {
-                //     return render('html', data)
-                // }
+                previewRender: render,
                 shortcuts: {
                     "Cmd-O": open,
                     "Cmd-S": save,
@@ -130,6 +128,5 @@
                 autofocus: true,
             });
             simplemde.toggleSideBySide()
-            // prompt('open', '{}')
         </script>
     </body> </html>
