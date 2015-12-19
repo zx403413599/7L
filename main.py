@@ -9,7 +9,7 @@ import PyQt4.QtGui
 from PyQt4.QtGui import QFontDatabase
 from PyQt4.QtWebKit import QWebSettings, QWebPage
 
-from subprocess import Popen, PIPE
+import subprocess
 
 
 class Editor:
@@ -78,7 +78,16 @@ class Editor:
         self.browser.webview.setWindowTitle(os.path.abspath(filename))
 
     def render(self, data):
-        pandoc = Popen(['pandoc'], stdin=PIPE, stdout=PIPE)
+        startupinfo = None
+        if os.name == 'nt':
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        pandoc = subprocess.Popen(
+            ['pandoc'],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            startupinfo=startupinfo
+        )
         ouput = pandoc.communicate(input=data.encode('utf-8'))[0]
         return ouput
 
