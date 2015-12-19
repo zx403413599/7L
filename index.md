@@ -18,7 +18,7 @@
 
 [github](https://github.com/xalley/7L/releases)
 
-[百度网盘]()
+[百度网盘](http://pan.baidu.com/s/1mhmilPu)
 
 
 ## 成分
