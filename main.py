@@ -6,8 +6,7 @@ import sys
 import json
 import spynner
 import PyQt4.QtGui
-from PyQt4.QtGui import QFontDatabase
-from PyQt4.QtWebKit import QWebSettings, QWebPage
+from PyQt4.QtWebKit import QWebPage
 
 import subprocess
 
@@ -28,20 +27,12 @@ class Editor:
             self._javascript_prompt_callback
         )
 
-        # 设置默认字体
-        font_id = QFontDatabase.addApplicationFont('data/wqy-microhei.ttc')
-        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        settings = QWebSettings.globalSettings()
-        settings.setFontFamily(QWebSettings.StandardFont, font_family)
-
         self.browser.load(self._url)
         self.browser.show()
         self.main_window = self._get_main_window()
 
         # 设置标题
         self.browser.webview.setWindowTitle(title)
-
-
         # 去掉右键出现的 Reload 菜单
         self.browser.webview.page().action(QWebPage.Reload).setVisible(False)
 
