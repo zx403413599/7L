@@ -88,8 +88,8 @@ class Editor:
             stdout=subprocess.PIPE,
             startupinfo=startupinfo
         )
-        ouput = pandoc.communicate(input=data.encode('utf-8'))[0]
-        return ouput
+        output = pandoc.communicate(input=data.encode('utf-8'))[0]
+        return output
 
     def _get_main_window(self):
         for widget in self.browser.application.allWidgets():
