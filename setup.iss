@@ -19,8 +19,8 @@ Filename: "{app}\{#PANDOCEXE}";Flags: shellexec waituntilterminated skipifdoesnt
 [uninstallrun]
 Filename: "msiexec";Flags:waituntilterminated skipifdoesntexist;Parameters:"/x {app}\{#PANDOCEXE}"
 
-; [icons]
-; Name: "{userdesktop}\7L";Filename: "{app}\7L.exe"; WorkingDir: "{app}";Comment:"Markdown 编辑器"
+[icons]
+Name: "{userdesktop}\7L";Filename: "{app}\7L.exe"; WorkingDir: "{app}";Comment:"Markdown 编辑器"
 
 [Setup]
 DisableProgramGroupPage=yes
