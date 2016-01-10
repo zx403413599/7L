@@ -29,7 +29,6 @@ class Editor:
 
         self.browser.load(self._url)
         self.browser.show()
-        self.main_window = self._get_main_window()
 
         # 设置标题
         self.browser.webview.setWindowTitle(title)
@@ -42,7 +41,7 @@ class Editor:
         self.browser.browse()
 
     def open(self):
-        dlg = PyQt4.QtGui.QFileDialog(self.main_window)
+        dlg = PyQt4.QtGui.QFileDialog()
         filename = dlg.getOpenFileName()
         if filename:
             data = open(filename).read()
@@ -57,7 +56,7 @@ class Editor:
             self.save_as(data)
 
     def save_as(self, data):
-        dlg = PyQt4.QtGui.QFileDialog(self.main_window)
+        dlg = PyQt4.QtGui.QFileDialog()
         filename = dlg.getSaveFileName()
         if filename:
             open(filename, 'w').write(data.encode('utf-8'))
@@ -83,11 +82,6 @@ class Editor:
         )
         output = pandoc.communicate(input=data.encode('utf-8'))[0]
         return output
-
-    def _get_main_window(self):
-        for widget in self.browser.application.allWidgets():
-            if widget.__class__ == PyQt4.QtGui.QWidget:
-                return widget
 
     def register_pycall(self, name, func):
         self._pycall[name] = func
