@@ -1,9 +1,9 @@
 ﻿#define PANDOCEXE "pandoc-1.15.2-windows.msi"
 [setup]
 AppName=7L
-AppVerName=V0.1.0
-DefaultDirName="C:\7L"
-AppVersion=0.1.0
+AppVerName=GO
+DefaultDirName="C:\Program Files\7L"
+AppVersion=0.2.0
 
 [components]
 Name: main; Description:"主程序(必选)";Types:full compact custom;Flags: fixed
