@@ -35,6 +35,8 @@ class Editor:
         self.browser.webview.setWindowTitle(title)
         # 去掉右键出现的 Reload 菜单
         self.browser.webview.page().action(QWebPage.Reload).setVisible(False)
+        # 设置图标
+        self.browser.application.setWindowIcon(PyQt4.QtGui.QIcon('data/icon/7L.ico'))
 
     def run(self):
         self.browser.browse()
