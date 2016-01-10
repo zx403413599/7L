@@ -17,7 +17,7 @@ h2:before {
     content: "## ";
 }
 
-li {
+ul > li {
     list-style-type: '* ';
 }
 
